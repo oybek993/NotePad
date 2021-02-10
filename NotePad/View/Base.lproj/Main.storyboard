@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BnH-L8-VLx">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Notes View Controller-->
+        <scene sceneID="b9y-QI-eIU">
+            <objects>
+                <tableViewController id="0BM-LY-FdQ" customClass="NotesViewController" customModule="NotePad" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="x27-Eo-X4N">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="items" id="nsa-Q2-hnA">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nsa-Q2-hnA" id="WK9-PD-Y2G">
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0BM-LY-FdQ" id="vDl-ow-643"/>
+                            <outlet property="delegate" destination="0BM-LY-FdQ" id="gJd-J2-IgT"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="OFH-Jb-cqr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="XiF-mC-6bl">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="0BM-LY-FdQ" id="S52-9e-Fc5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="eKK-83-6JZ" kind="show" identifier="itemToNote" id="rVS-fd-uTn"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aVF-hn-udC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1079.7101449275362" y="101.78571428571428"/>
+        </scene>
+        <!--Note-->
+        <scene sceneID="dod-eG-4hM">
+            <objects>
+                <viewController id="eKK-83-6JZ" customClass="EditorViewController" customModule="NotePad" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KOw-TQ-S6w">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mgk-mn-Ul2">
+                                <rect key="frame" x="20" y="108" width="374" height="734"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bih-bg-65J"/>
+                        <color key="backgroundColor" red="0.1096570566" green="0.26222372059999999" blue="0.28235828880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="bih-bg-65J" firstAttribute="bottom" secondItem="mgk-mn-Ul2" secondAttribute="bottom" constant="20" id="8Xf-sU-CoZ"/>
+                            <constraint firstItem="mgk-mn-Ul2" firstAttribute="leading" secondItem="bih-bg-65J" secondAttribute="leading" constant="20" id="EFi-2N-ukv"/>
+                            <constraint firstItem="bih-bg-65J" firstAttribute="trailing" secondItem="mgk-mn-Ul2" secondAttribute="trailing" constant="20" id="NyH-Kx-XF1"/>
+                            <constraint firstItem="mgk-mn-Ul2" firstAttribute="top" secondItem="bih-bg-65J" secondAttribute="top" constant="20" id="OGg-mq-0Iy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Note" leftItemsSupplementBackButton="YES" id="kg0-Gt-ktG"/>
+                    <connections>
+                        <outlet property="editorTextView" destination="mgk-mn-Ul2" id="aUt-qy-zHu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mma-wa-K3v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1802.8985507246377" y="101.78571428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pWc-68-wER">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BnH-L8-VLx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OZd-du-QDk">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0BM-LY-FdQ" kind="relationship" relationship="rootViewController" id="1bW-H1-3qy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jX1-2F-k8m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="169.56521739130437" y="101.78571428571428"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
